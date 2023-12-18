@@ -38,7 +38,7 @@ pass
 
 @app.get("/ping")
 async def ping():
-    return "Hello, I am alive.123"
+    return "Hello, I am alive."
 
 def read_file_as_image(data) -> np.ndarray:
     image = np.array(Image.open(BytesIO(data)))
