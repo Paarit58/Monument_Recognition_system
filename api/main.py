@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("../saved_models/2")
+MODEL = tf.keras.models.load_model("../saved_models/4")
 
 CLASS_NAMES = ['Bhimsen_Temple',
  'Char_Narayan_Temple',
