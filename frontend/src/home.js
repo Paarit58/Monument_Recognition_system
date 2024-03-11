@@ -102,7 +102,8 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: 'flex',
     justifyContent: 'center',
-    alignContent: 'center'
+    alignContent: 'center',
+    textAlign: 'center',
   },
   loader: {
     color: '#be6a77 !important',
@@ -123,7 +124,7 @@ export const ImageUpload = () => {
       formData.append("file", selectedFile);
       let res = await axios({
         method: "post",
-        url: process.env.REACT_APP_API_URL,
+        url: "http://192.168.101.9:8000/predict" ,
         data: formData,
       });
       if (res.status === 200) {
@@ -175,7 +176,7 @@ export const ImageUpload = () => {
 
   return (
     <React.Fragment>
-      <AppBar position="static" className={classes.appbar}>
+      <AppBar position="fixed" top="0" className={classes.appbar}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             MONUMENT CLASSIFICATION(PATAN DURBAR SQUARE)
