@@ -6,9 +6,7 @@ from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 from descriptions import *
-#import asyncio
-#from asyncio import events
-#asyncio.set_event_loop_policy(events.AbstractEventLoopPolicy())
+
 
 
 app = FastAPI()
@@ -25,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("../saved_models/model_3")
+MODEL = tf.keras.models.load_model("./saved_models/model_3")
 
 CLASS_NAMES = ['Bhimsen_Temple',
  'Char_Narayan_Temple',
@@ -64,5 +62,9 @@ async def predict(
         'description': descriptions[predicted_class]
     }
 
+# if __name__ == "__main__":
+#     uvicorn.run(app, host='192.168.101.11', port=8000)
+
 if __name__ == "__main__":
-    uvicorn.run(app, host='192.168.101.11', port=8000)
+    uvicorn.run(app, host='localhost', port=8000)
+
