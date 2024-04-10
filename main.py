@@ -5,7 +5,8 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
-from descriptions import *
+from api import descriptions
+from keras.layers import TFSMLayer
 
 
 
@@ -23,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("./saved_models/model_3")
+MODEL = TFSMLayer("./saved_models/model_3", call_endpoint='serving_default')
 
 CLASS_NAMES = ['Bhimsen_Temple',
  'Char_Narayan_Temple',
@@ -66,5 +67,5 @@ async def predict(
 #     uvicorn.run(app, host='192.168.101.11', port=8000)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='localhost', port=8000)
+    app.run(host='0.0.0.0', port=8000, debug=True)
 
