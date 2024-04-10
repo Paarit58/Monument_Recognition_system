@@ -3,9 +3,9 @@ services:
   app:  
     build: .
     volumes:
-      - .:/apples_detector
-    image: shubhamkarn/apple_detector:latest
-    container_name: apples_container
+      - .:/monument_detector
+    image: app:latest
+    container_name: monument_container
     command: uvicorn main:app --host 0.0.0.0 --port 8000
 
   nginx:
